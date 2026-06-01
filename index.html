@@ -1394,6 +1394,33 @@
       pointer-events: all;
     }
 
+    #mobile-close {
+      position: absolute;
+      top: 20px;
+      right: 16px;
+      z-index: 1200;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(6, 13, 31, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      color: rgba(255, 255, 255, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s ease-in-out;
+    }
+
+    #mobile-close:hover {
+      background: rgba(6, 13, 31, 0.85);
+      border-color: rgba(79, 195, 247, 0.5);
+      transform: rotate(90deg);
+      color: #fff;
+    }
+
     .mob-nav {
       display: flex;
       flex-direction: column;
@@ -1624,6 +1651,11 @@
         top: 116px;
         right: 12px;
       }
+
+      #mobile-close {
+        top: 16px;
+        right: 12px;
+      }
     }
 
     /* ── Animations ── */
@@ -1773,6 +1805,13 @@
 
   <!-- Mobile full-screen menu overlay (outside nav so backdrop-filter doesn't clip it) -->
   <div id="mobile-overlay" aria-hidden="true">
+    <div id="mobile-close" aria-label="Close menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
     <nav class="mob-nav" aria-label="Mobile navigation">
       <a href="#home" class="mob-link" data-close>Home</a>
       <a href="#about" class="mob-link" data-close>About</a>
@@ -2237,6 +2276,11 @@
     mobileOverlay.querySelectorAll('[data-close]').forEach(el => {
       el.addEventListener('click', closeMenu);
     });
+
+    const mobileClose = document.getElementById('mobile-close');
+    if (mobileClose) {
+      mobileClose.addEventListener('click', closeMenu);
+    }
 
     // Active nav link on scroll
     const sections = document.querySelectorAll('section[id], #experience');
