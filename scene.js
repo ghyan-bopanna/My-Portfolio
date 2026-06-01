@@ -258,6 +258,30 @@ function refreshGUIDisplays() {
 
 buildGUI()
 
+// ─── Pink Fish preset (callable from nav button) ──────────────────────────────
+const PINK_FISH_COLOR   = '#ff00c8'   // R:255, G:0,   B:200
+const PINK_AMBIENT_COLOR = '#e7ea48'  // R:231, G:234, B:72
+
+let pinkFishActive = false
+
+window.applyPinkFish = function () {
+  pinkFishActive = !pinkFishActive
+
+  if (pinkFishActive) {
+    params.fishColor    = PINK_FISH_COLOR
+    params.ambientColor = PINK_AMBIENT_COLOR
+  } else {
+    params.fishColor    = '#0d0a1a'
+    params.ambientColor = '#404060'
+  }
+
+  boids.fishColor = params.fishColor
+  ambientLight.color.set(params.ambientColor)
+  refreshGUIDisplays()
+
+  return pinkFishActive
+}
+
 // Invisible overlay to capture pointer events for dragging in debug mode
 const debugOverlay = document.createElement('div')
 debugOverlay.style.cssText = 'position:fixed;inset:0;z-index:1;display:none;'
