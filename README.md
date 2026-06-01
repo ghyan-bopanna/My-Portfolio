@@ -1,6 +1,8 @@
 # 🌊 Deep Sea Boid Portfolio
 ![Deep Sea Boid Portfolio](image.png)
 
+🔗 **Check it out !! [Live Portfolio](https://ghyans-portfolio.netlify.app/)**
+
 * **Bioluminescent Boids:** An interactive flocking simulation set in the abyssal zone.
 * **Interactive Navigation:** Fish react dynamically to user clicks, cursor lights, and project nodes.
 * **Deep Sea Theme:** Sleek glassmorphic interfaces mimicking deep-sea exploration submersibles.
